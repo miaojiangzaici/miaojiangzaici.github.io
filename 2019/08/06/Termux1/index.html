@@ -1,0 +1,340 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta name="generator" content="Hexo 3.9.0"><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5"><title>【Termux】用Termux玩游戏 | miao OAO</title><meta name="description" content="【Termux】用Termux玩游戏"><meta name="keywords" content="0基础Termux"><meta name="author" content="miao OAO"><meta name="copyright" content="miao OAO"><meta name="format-detection" content="telephone=no"><link rel="shortcut icon" href="/img/favicon.ico"><link rel="preconnect" href="//cdn.jsdelivr.net"><link rel="preconnect" href="https://www.google-analytics.com" crossorigin><link rel="preconnect" href="https://hm.baidu.com"><link rel="preconnect" href="https://fonts.googleapis.com" crossorigin><link rel="preconnect" href="//busuanzi.ibruce.info"><meta name="google-site-verification" content="TSQ77qLNworc4lsCo0n6RnP0Q4kudjf101EmvJmXapM"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="【Termux】用Termux玩游戏"><meta name="twitter:description" content="【Termux】用Termux玩游戏"><meta name="twitter:image" content="https://i.loli.net/2020/03/14/KjeSy2LlBOcE8JD.jpg"><meta property="og:type" content="article"><meta property="og:title" content="【Termux】用Termux玩游戏"><meta property="og:url" content="https://miaooao.top/2019/08/06/Termux1/"><meta property="og:site_name" content="miao OAO"><meta property="og:description" content="【Termux】用Termux玩游戏"><meta property="og:image" content="https://i.loli.net/2020/03/14/KjeSy2LlBOcE8JD.jpg"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><script src="https://cdn.jsdelivr.net/npm/js-cookie/dist/js.cookie.min.js"></script><script>const autoChangeMode = '2'
+var t = Cookies.get("theme");
+if (autoChangeMode == '1'){
+const isDarkMode = window.matchMedia("(prefers-color-scheme: dark)").matches
+const isLightMode = window.matchMedia("(prefers-color-scheme: light)").matches
+const isNotSpecified = window.matchMedia("(prefers-color-scheme: no-preference)").matches
+const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+if (t === undefined){
+  if (isLightMode) activateLightMode()
+  else if (isDarkMode) activateDarkMode()
+  else if (isNotSpecified || hasNoSupport){
+    console.log('You specified no preference for a color scheme or your browser does not support it. I Schedule dark mode during night time.')
+    now = new Date();
+    hour = now.getHours();
+    isNight = hour < 6 || hour >= 18
+    isNight ? activateDarkMode() : activateLightMode()
+}
+} else if (t == 'light') activateLightMode()
+else activateDarkMode()
+
+
+} else if (autoChangeMode == '2'){
+  now = new Date();
+  hour = now.getHours();
+  isNight = hour < 6 || hour >= 18
+  if(t === undefined) isNight? activateDarkMode() : activateLightMode()
+  else if (t === 'light') activateLightMode()
+  else activateDarkMode() 
+} else {
+  if ( t == 'dark' ) activateDarkMode()
+  else if ( t == 'light') activateLightMode()
+}
+
+function activateDarkMode(){
+  document.documentElement.setAttribute('data-theme', 'dark')
+  if (document.querySelector('meta[name="theme-color"]') !== null){
+    document.querySelector('meta[name="theme-color"]').setAttribute('content','#000')
+  }
+}
+function activateLightMode(){
+  document.documentElement.setAttribute('data-theme', 'light')
+  if (document.querySelector('meta[name="theme-color"]') !== null){
+  document.querySelector('meta[name="theme-color"]').setAttribute('content','#fff')
+  }
+}</script><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@latest/css/font-awesome.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css"><link rel="canonical" href="https://miaooao.top/2019/08/06/Termux1/"><link rel="prev" title="【干货】优秀实用的网址整理分享-1" href="https://miaooao.top/2019/08/07/wangzhi/"><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><script>(adsbygoogle = window.adsbygoogle || []).push({
+  google_ad_client: 'ca-pub-4546898143730349',
+  enable_page_level_ads: 'true'
+});</script><script>var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?866f700c976922b2e3c1491cb215e871";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-145336968-1', 'auto');
+ga('send', 'pageview');
+</script><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web"><script src="https://cdn.jsdelivr.net/gh/wallleap/cdn@latest/js/hititle.js"></script>
+<script async custom-element="amp-ad" src="https://cdn.ampproject.org/v0/amp-ad-0.1.js"></script><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容:${query}"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"cookieDomain":"https://xxx/","msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简"},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  bookmark: {
+    title: 'Snackbar.bookmark.title',
+    message_prev: '按',
+    message_next: '键将本页加入书签'
+  },
+  runtime_unit: '天',
+  runtime: true,
+  copyright: {"languages":{"author":"作者: miao OAO","link":"链接: https://miaooao.top/2019/08/06/Termux1/","source":"来源: miao OAO","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  ClickShowText: {"text":"富强,民主,文明,和谐,自由,平等,公正,法治,爱国,敬业,诚信,友善,彩蛋","fontSize":"15px"},
+  medium_zoom: false,
+  fancybox: true,
+  Snackbar: {"bookmark":{"title":"Snackbar.bookmark.title","message_prev":"按","message_next":"键将本页加入书签"},"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#2d3035","position":"bottom-left"},
+  baiduPush: true,
+  isHome: false,
+  isPost: true
+  
+}</script></head><body><header> <div id="page-header"><span class="pull_left" id="blog_name"><a class="blog_title" id="site-name" href="/">miao OAO</a></span><span class="toggle-menu pull_right close"><a class="site-page"><i class="fa fa-bars fa-fw" aria-hidden="true"></i></a></span><span class="pull_right menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> 文章</span></a></div><div class="menus_item"><a class="site-page" href="/playlist/"><i class="fa-fw fa fa-play-circle"></i><span> 音乐</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fa fa-heart"></i><span> 关于</span></a></div></div></span><span class="pull_right" id="search_button"><a class="site-page social-icon search"><i class="fa fa-search fa-fw"></i><span> 搜索</span></a></span></div></header><div id="mobile-sidebar"><div id="menu_mask"></div><div id="mobile-sidebar-menus"><div class="mobile_author_icon"><img class="avatar-img" src="/img/avatar.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"></div><div class="mobile_post_data"><div class="mobile_data_item is-center"><div class="mobile_data_link"><a href="/archives/"><div class="headline">文章</div><div class="length_num">6</div></a></div></div><div class="mobile_data_item is-center">      <div class="mobile_data_link"><a href="/tags/"><div class="headline">标签</div><div class="length_num">4</div></a></div></div><div class="mobile_data_item is-center">     <div class="mobile_data_link"><a href="/categories/"><div class="headline">分类</div><div class="length_num">3</div></a></div></div></div><hr><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> 文章</span></a></div><div class="menus_item"><a class="site-page" href="/playlist/"><i class="fa-fw fa fa-play-circle"></i><span> 音乐</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fa fa-heart"></i><span> 关于</span></a></div></div></div><div id="mobile-sidebar-toc"><div class="toc_mobile_headline">目录</div><div class="sidebar-toc__content"><ol class="toc_mobile_items"><li class="toc_mobile_items-item toc_mobile_items-level-1"><a class="toc_mobile_items-link" href="#快速开始"><span class="toc_mobile_items-number">1.</span> <span class="toc_mobile_items-text">快速开始</span></a><ol class="toc_mobile_items-child"><li class="toc_mobile_items-item toc_mobile_items-level-2"><a class="toc_mobile_items-link" href="#前言"><span class="toc_mobile_items-number">1.1.</span> <span class="toc_mobile_items-text">前言</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-2"><a class="toc_mobile_items-link" href="#应用简介"><span class="toc_mobile_items-number">1.2.</span> <span class="toc_mobile_items-text">应用简介</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-2"><a class="toc_mobile_items-link" href="#游戏通用安装方法"><span class="toc_mobile_items-number">1.3.</span> <span class="toc_mobile_items-text">游戏通用安装方法</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-2"><a class="toc_mobile_items-link" href="#游戏概览"><span class="toc_mobile_items-number">1.4.</span> <span class="toc_mobile_items-text">游戏概览</span></a></li></ol></li><li class="toc_mobile_items-item toc_mobile_items-level-1"><a class="toc_mobile_items-link" href="#正文"><span class="toc_mobile_items-number">2.</span> <span class="toc_mobile_items-text">正文</span></a><ol class="toc_mobile_items-child"><li class="toc_mobile_items-item toc_mobile_items-level-2"><a class="toc_mobile_items-link" href="#游戏一【ANGBAND】"><span class="toc_mobile_items-number">2.1.</span> <span class="toc_mobile_items-text">游戏一【ANGBAND】</span></a><ol class="toc_mobile_items-child"><li class="toc_mobile_items-item toc_mobile_items-level-3"><a class="toc_mobile_items-link" href="#安装方法"><span class="toc_mobile_items-number">2.1.1.</span> <span class="toc_mobile_items-text">安装方法</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-3"><a class="toc_mobile_items-link" href="#报错及解决方法"><span class="toc_mobile_items-number">2.1.2.</span> <span class="toc_mobile_items-text">报错及解决方法</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-3"><a class="toc_mobile_items-link" href="#游戏类型"><span class="toc_mobile_items-number">2.1.3.</span> <span class="toc_mobile_items-text">游戏类型</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-3"><a class="toc_mobile_items-link" href="#游戏简介"><span class="toc_mobile_items-number">2.1.4.</span> <span class="toc_mobile_items-text">游戏简介</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-3"><a class="toc_mobile_items-link" href="#游玩建议"><span class="toc_mobile_items-number">2.1.5.</span> <span class="toc_mobile_items-text">游玩建议</span></a></li></ol></li><li class="toc_mobile_items-item toc_mobile_items-level-2"><a class="toc_mobile_items-link" href="#游戏二-【brogue】"><span class="toc_mobile_items-number">2.2.</span> <span class="toc_mobile_items-text">游戏二.【brogue】</span></a><ol class="toc_mobile_items-child"><li class="toc_mobile_items-item toc_mobile_items-level-3"><a class="toc_mobile_items-link" href="#安装方法-1"><span class="toc_mobile_items-number">2.2.1.</span> <span class="toc_mobile_items-text">安装方法</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-3"><a class="toc_mobile_items-link" href="#报错及解决方法-1"><span class="toc_mobile_items-number">2.2.2.</span> <span class="toc_mobile_items-text">报错及解决方法</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-3"><a class="toc_mobile_items-link" href="#游戏类型-1"><span class="toc_mobile_items-number">2.2.3.</span> <span class="toc_mobile_items-text">游戏类型</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-3"><a class="toc_mobile_items-link" href="#游戏简介-1"><span class="toc_mobile_items-number">2.2.4.</span> <span class="toc_mobile_items-text">游戏简介</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-3"><a class="toc_mobile_items-link" href="#游玩建议-1"><span class="toc_mobile_items-number">2.2.5.</span> <span class="toc_mobile_items-text">游玩建议</span></a></li></ol></li><li class="toc_mobile_items-item toc_mobile_items-level-2"><a class="toc_mobile_items-link" href="#游戏三-【curse-of-war】"><span class="toc_mobile_items-number">2.3.</span> <span class="toc_mobile_items-text">游戏三.【curse of war】</span></a><ol class="toc_mobile_items-child"><li class="toc_mobile_items-item toc_mobile_items-level-3"><a class="toc_mobile_items-link" href="#安装方法-2"><span class="toc_mobile_items-number">2.3.1.</span> <span class="toc_mobile_items-text">安装方法</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-3"><a class="toc_mobile_items-link" href="#游戏类型-2"><span class="toc_mobile_items-number">2.3.2.</span> <span class="toc_mobile_items-text">游戏类型</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-3"><a class="toc_mobile_items-link" href="#游戏简介-2"><span class="toc_mobile_items-number">2.3.3.</span> <span class="toc_mobile_items-text">游戏简介</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-3"><a class="toc_mobile_items-link" href="#游玩建议-2"><span class="toc_mobile_items-number">2.3.4.</span> <span class="toc_mobile_items-text">游玩建议</span></a></li></ol></li><li class="toc_mobile_items-item toc_mobile_items-level-2"><a class="toc_mobile_items-link" href="#游戏四-【frotz】"><span class="toc_mobile_items-number">2.4.</span> <span class="toc_mobile_items-text">游戏四.【frotz】</span></a><ol class="toc_mobile_items-child"><li class="toc_mobile_items-item toc_mobile_items-level-3"><a class="toc_mobile_items-link" href="#安装方法-3"><span class="toc_mobile_items-number">2.4.1.</span> <span class="toc_mobile_items-text">安装方法</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-3"><a class="toc_mobile_items-link" href="#游戏类型-3"><span class="toc_mobile_items-number">2.4.2.</span> <span class="toc_mobile_items-text">游戏类型</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-3"><a class="toc_mobile_items-link" href="#游玩建议-3"><span class="toc_mobile_items-number">2.4.3.</span> <span class="toc_mobile_items-text">游玩建议</span></a></li></ol></li><li class="toc_mobile_items-item toc_mobile_items-level-2"><a class="toc_mobile_items-link" href="#游戏五-【glulxe】"><span class="toc_mobile_items-number">2.5.</span> <span class="toc_mobile_items-text">游戏五.【glulxe】</span></a><ol class="toc_mobile_items-child"><li class="toc_mobile_items-item toc_mobile_items-level-3"><a class="toc_mobile_items-link" href="#安装方法-4"><span class="toc_mobile_items-number">2.5.1.</span> <span class="toc_mobile_items-text">安装方法</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-3"><a class="toc_mobile_items-link" href="#游戏简介-3"><span class="toc_mobile_items-number">2.5.2.</span> <span class="toc_mobile_items-text">游戏简介</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-3"><a class="toc_mobile_items-link" href="#游戏类型-4"><span class="toc_mobile_items-number">2.5.3.</span> <span class="toc_mobile_items-text">游戏类型</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-3"><a class="toc_mobile_items-link" href="#游玩建议-4"><span class="toc_mobile_items-number">2.5.4.</span> <span class="toc_mobile_items-text">游玩建议</span></a></li></ol></li><li class="toc_mobile_items-item toc_mobile_items-level-2"><a class="toc_mobile_items-link" href="#游戏六-【gnugo】"><span class="toc_mobile_items-number">2.6.</span> <span class="toc_mobile_items-text">游戏六.【gnugo】</span></a><ol class="toc_mobile_items-child"><li class="toc_mobile_items-item toc_mobile_items-level-3"><a class="toc_mobile_items-link" href="#安装方法-5"><span class="toc_mobile_items-number">2.6.1.</span> <span class="toc_mobile_items-text">安装方法</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-3"><a class="toc_mobile_items-link" href="#游戏类型-5"><span class="toc_mobile_items-number">2.6.2.</span> <span class="toc_mobile_items-text">游戏类型</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-3"><a class="toc_mobile_items-link" href="#游戏简介-4"><span class="toc_mobile_items-number">2.6.3.</span> <span class="toc_mobile_items-text">游戏简介</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-3"><a class="toc_mobile_items-link" href="#游玩建议-5"><span class="toc_mobile_items-number">2.6.4.</span> <span class="toc_mobile_items-text">游玩建议</span></a></li></ol></li><li class="toc_mobile_items-item toc_mobile_items-level-2"><a class="toc_mobile_items-link" href="#游戏七-【gnushogi】"><span class="toc_mobile_items-number">2.7.</span> <span class="toc_mobile_items-text">游戏七.【gnushogi】</span></a><ol class="toc_mobile_items-child"><li class="toc_mobile_items-item toc_mobile_items-level-3"><a class="toc_mobile_items-link" href="#安装方法-6"><span class="toc_mobile_items-number">2.7.1.</span> <span class="toc_mobile_items-text">安装方法</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-3"><a class="toc_mobile_items-link" href="#游戏类型-6"><span class="toc_mobile_items-number">2.7.2.</span> <span class="toc_mobile_items-text">游戏类型</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-3"><a class="toc_mobile_items-link" href="#游戏简介-5"><span class="toc_mobile_items-number">2.7.3.</span> <span class="toc_mobile_items-text">游戏简介</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-3"><a class="toc_mobile_items-link" href="#游玩建议-6"><span class="toc_mobile_items-number">2.7.4.</span> <span class="toc_mobile_items-text">游玩建议</span></a></li></ol></li><li class="toc_mobile_items-item toc_mobile_items-level-2"><a class="toc_mobile_items-link" href="#游戏八-【greed】"><span class="toc_mobile_items-number">2.8.</span> <span class="toc_mobile_items-text">游戏八.【greed】</span></a><ol class="toc_mobile_items-child"><li class="toc_mobile_items-item toc_mobile_items-level-3"><a class="toc_mobile_items-link" href="#安装方法-7"><span class="toc_mobile_items-number">2.8.1.</span> <span class="toc_mobile_items-text">安装方法</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-3"><a class="toc_mobile_items-link" href="#游戏类型-7"><span class="toc_mobile_items-number">2.8.2.</span> <span class="toc_mobile_items-text">游戏类型</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-3"><a class="toc_mobile_items-link" href="#游戏简介-6"><span class="toc_mobile_items-number">2.8.3.</span> <span class="toc_mobile_items-text">游戏简介</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-3"><a class="toc_mobile_items-link" href="#游玩建议-7"><span class="toc_mobile_items-number">2.8.4.</span> <span class="toc_mobile_items-text">游玩建议</span></a></li></ol></li><li class="toc_mobile_items-item toc_mobile_items-level-2"><a class="toc_mobile_items-link" href="#游戏九-【moon-buggy】"><span class="toc_mobile_items-number">2.9.</span> <span class="toc_mobile_items-text">游戏九.【moon-buggy】</span></a><ol class="toc_mobile_items-child"><li class="toc_mobile_items-item toc_mobile_items-level-3"><a class="toc_mobile_items-link" href="#安装方法-8"><span class="toc_mobile_items-number">2.9.1.</span> <span class="toc_mobile_items-text">安装方法</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-3"><a class="toc_mobile_items-link" href="#游戏类型-8"><span class="toc_mobile_items-number">2.9.2.</span> <span class="toc_mobile_items-text">游戏类型</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-3"><a class="toc_mobile_items-link" href="#游戏简介-7"><span class="toc_mobile_items-number">2.9.3.</span> <span class="toc_mobile_items-text">游戏简介</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-3"><a class="toc_mobile_items-link" href="#游玩建议-8"><span class="toc_mobile_items-number">2.9.4.</span> <span class="toc_mobile_items-text">游玩建议</span></a></li></ol></li><li class="toc_mobile_items-item toc_mobile_items-level-2"><a class="toc_mobile_items-link" href="#游戏十-【moria】"><span class="toc_mobile_items-number">2.10.</span> <span class="toc_mobile_items-text">游戏十.【moria】</span></a><ol class="toc_mobile_items-child"><li class="toc_mobile_items-item toc_mobile_items-level-3"><a class="toc_mobile_items-link" href="#安装方法-9"><span class="toc_mobile_items-number">2.10.1.</span> <span class="toc_mobile_items-text">安装方法</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-3"><a class="toc_mobile_items-link" href="#游戏类型-9"><span class="toc_mobile_items-number">2.10.2.</span> <span class="toc_mobile_items-text">游戏类型</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-3"><a class="toc_mobile_items-link" href="#游戏简介-8"><span class="toc_mobile_items-number">2.10.3.</span> <span class="toc_mobile_items-text">游戏简介</span></a></li></ol></li></ol></li><li class="toc_mobile_items-item toc_mobile_items-level-1"><a class="toc_mobile_items-link" href="#后记"><span class="toc_mobile_items-number">3.</span> <span class="toc_mobile_items-text">后记</span></a></li></ol></div></div></div><div id="body-wrap"><div id="web_bg" data-type="color"></div><i class="fa fa-arrow-right" id="toggle-sidebar" aria-hidden="true">     </i><div class="auto_open" id="sidebar"><div class="sidebar-toc"><div class="sidebar-toc__title">目录</div><div class="sidebar-toc__progress"><span class="progress-notice">你已经读了</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar">     </div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#快速开始"><span class="toc-number">1.</span> <span class="toc-text">快速开始</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-number">1.1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#应用简介"><span class="toc-number">1.2.</span> <span class="toc-text">应用简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#游戏通用安装方法"><span class="toc-number">1.3.</span> <span class="toc-text">游戏通用安装方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#游戏概览"><span class="toc-number">1.4.</span> <span class="toc-text">游戏概览</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#正文"><span class="toc-number">2.</span> <span class="toc-text">正文</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#游戏一【ANGBAND】"><span class="toc-number">2.1.</span> <span class="toc-text">游戏一【ANGBAND】</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#安装方法"><span class="toc-number">2.1.1.</span> <span class="toc-text">安装方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#报错及解决方法"><span class="toc-number">2.1.2.</span> <span class="toc-text">报错及解决方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#游戏类型"><span class="toc-number">2.1.3.</span> <span class="toc-text">游戏类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#游戏简介"><span class="toc-number">2.1.4.</span> <span class="toc-text">游戏简介</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#游玩建议"><span class="toc-number">2.1.5.</span> <span class="toc-text">游玩建议</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#游戏二-【brogue】"><span class="toc-number">2.2.</span> <span class="toc-text">游戏二.【brogue】</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#安装方法-1"><span class="toc-number">2.2.1.</span> <span class="toc-text">安装方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#报错及解决方法-1"><span class="toc-number">2.2.2.</span> <span class="toc-text">报错及解决方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#游戏类型-1"><span class="toc-number">2.2.3.</span> <span class="toc-text">游戏类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#游戏简介-1"><span class="toc-number">2.2.4.</span> <span class="toc-text">游戏简介</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#游玩建议-1"><span class="toc-number">2.2.5.</span> <span class="toc-text">游玩建议</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#游戏三-【curse-of-war】"><span class="toc-number">2.3.</span> <span class="toc-text">游戏三.【curse of war】</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#安装方法-2"><span class="toc-number">2.3.1.</span> <span class="toc-text">安装方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#游戏类型-2"><span class="toc-number">2.3.2.</span> <span class="toc-text">游戏类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#游戏简介-2"><span class="toc-number">2.3.3.</span> <span class="toc-text">游戏简介</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#游玩建议-2"><span class="toc-number">2.3.4.</span> <span class="toc-text">游玩建议</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#游戏四-【frotz】"><span class="toc-number">2.4.</span> <span class="toc-text">游戏四.【frotz】</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#安装方法-3"><span class="toc-number">2.4.1.</span> <span class="toc-text">安装方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#游戏类型-3"><span class="toc-number">2.4.2.</span> <span class="toc-text">游戏类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#游玩建议-3"><span class="toc-number">2.4.3.</span> <span class="toc-text">游玩建议</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#游戏五-【glulxe】"><span class="toc-number">2.5.</span> <span class="toc-text">游戏五.【glulxe】</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#安装方法-4"><span class="toc-number">2.5.1.</span> <span class="toc-text">安装方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#游戏简介-3"><span class="toc-number">2.5.2.</span> <span class="toc-text">游戏简介</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#游戏类型-4"><span class="toc-number">2.5.3.</span> <span class="toc-text">游戏类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#游玩建议-4"><span class="toc-number">2.5.4.</span> <span class="toc-text">游玩建议</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#游戏六-【gnugo】"><span class="toc-number">2.6.</span> <span class="toc-text">游戏六.【gnugo】</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#安装方法-5"><span class="toc-number">2.6.1.</span> <span class="toc-text">安装方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#游戏类型-5"><span class="toc-number">2.6.2.</span> <span class="toc-text">游戏类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#游戏简介-4"><span class="toc-number">2.6.3.</span> <span class="toc-text">游戏简介</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#游玩建议-5"><span class="toc-number">2.6.4.</span> <span class="toc-text">游玩建议</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#游戏七-【gnushogi】"><span class="toc-number">2.7.</span> <span class="toc-text">游戏七.【gnushogi】</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#安装方法-6"><span class="toc-number">2.7.1.</span> <span class="toc-text">安装方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#游戏类型-6"><span class="toc-number">2.7.2.</span> <span class="toc-text">游戏类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#游戏简介-5"><span class="toc-number">2.7.3.</span> <span class="toc-text">游戏简介</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#游玩建议-6"><span class="toc-number">2.7.4.</span> <span class="toc-text">游玩建议</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#游戏八-【greed】"><span class="toc-number">2.8.</span> <span class="toc-text">游戏八.【greed】</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#安装方法-7"><span class="toc-number">2.8.1.</span> <span class="toc-text">安装方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#游戏类型-7"><span class="toc-number">2.8.2.</span> <span class="toc-text">游戏类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#游戏简介-6"><span class="toc-number">2.8.3.</span> <span class="toc-text">游戏简介</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#游玩建议-7"><span class="toc-number">2.8.4.</span> <span class="toc-text">游玩建议</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#游戏九-【moon-buggy】"><span class="toc-number">2.9.</span> <span class="toc-text">游戏九.【moon-buggy】</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#安装方法-8"><span class="toc-number">2.9.1.</span> <span class="toc-text">安装方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#游戏类型-8"><span class="toc-number">2.9.2.</span> <span class="toc-text">游戏类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#游戏简介-7"><span class="toc-number">2.9.3.</span> <span class="toc-text">游戏简介</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#游玩建议-8"><span class="toc-number">2.9.4.</span> <span class="toc-text">游玩建议</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#游戏十-【moria】"><span class="toc-number">2.10.</span> <span class="toc-text">游戏十.【moria】</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#安装方法-9"><span class="toc-number">2.10.1.</span> <span class="toc-text">安装方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#游戏类型-9"><span class="toc-number">2.10.2.</span> <span class="toc-text">游戏类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#游戏简介-8"><span class="toc-number">2.10.3.</span> <span class="toc-text">游戏简介</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#后记"><span class="toc-number">3.</span> <span class="toc-text">后记</span></a></li></ol></div></div></div><main id="content-outer"><div id="top-container" style="background-image: url(https://i.loli.net/2020/03/14/KjeSy2LlBOcE8JD.jpg)"><div id="post-info"><div id="post-title"><div class="posttitle">【Termux】用Termux玩游戏</div></div><div id="post-meta"><time class="post-meta__date"><i class="fa fa-calendar fa-fw" aria-hidden="true"></i> 发表于 2019-08-06<span class="post-meta__separator">|</span><i class="fa fa-history fa-fw" aria-hidden="true"></i> 更新于 2020-03-26</time><span class="post-meta__separator">|</span><span><i class="fa fa-inbox post-meta__icon fa-fw" aria-hidden="true"></i><a class="post-meta__categories" href="/categories/Android教程/">Android教程</a></span><div class="post-meta-wordcount"><i class="fa fa-file-word-o post-meta__icon fa-fw" aria-hidden="true"></i><span>字数总计:</span><span class="word-count">3.2k</span><span class="post-meta__separator">|</span><i class="fa fa-clock-o post-meta__icon fa-fw" aria-hidden="true"></i><span>阅读时长: 10 分钟</span><div class="post-meta-pv-cv"><span class="post-meta__separator">|</span><span><i class="fa fa-eye post-meta__icon fa-fw" aria-hidden="true"> </i>阅读量:</span><span id="busuanzi_value_page_pv"></span><span class="post-meta__separator">|</span><i class="fa fa-comments-o post-meta__icon fa-fw" aria-hidden="true"></i><span>评论数:</span><a href="/2019/08/06/Termux1/#post-comment" itemprop="discussionUrl"><span class="valine-comment-count comment-count" data-xid="/2019/08/06/Termux1/" itemprop="commentCount"></span></a></div></div></div></div></div><div class="layout layout_post" id="content-inner">   <article id="post"><div class="article-container" id="post-content"><h1 id="快速开始"><a href="#快速开始" class="headerlink" title="快速开始"></a>快速开始</h1><p>文章类型：教程贴＋微科普＋黑科技＋原创</p>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>本文把所有的termux apt 源中的游戏来列举出来了，当然都是很老的，怀旧或是尝鲜吧，很多都是目前游戏的鼻祖或是给当前游戏奠定了模式基础，下面我的文章里尽可能在短的文字里介绍一下来源玩法什么的，引用的（不想写的）会以外部链接的方式放出。</p>
+<p>这篇文章面对0基础玩家，意味着无论你是否以前接触过，看了相信你就会了，任何事情这都要耐心的，不要嫌麻烦，当然某些游戏纯英文又是文字游戏，英文恼火的就很那什么了（尴尬），你可以选择玩其他的，如果很想玩，那就赶紧去xio英（♂）语！</p>
+<p>来源是apt search game上所有的游戏，因为对比较老的游戏也不是很理解，很清楚，求大佬改正。这里举出10个，共12个，另外两个可以自己探索哟。</p>
+<h2 id="应用简介"><a href="#应用简介" class="headerlink" title="应用简介"></a>应用简介</h2><p>软件名称:Termux</p>
+<p>软件版本:0.65/0.55</p>
+<p>软件大小:207.56KB</p>
+<p>官方简介:高级终端Termux组合了强大的终端模拟 和拓展Linux包收集支持。享受bash和zsh。使用 nano和vim编辑文件。通过ssh访问服务器。使用 gcc和clang编译代码。使用python控制台来作为 口袋计算器。使用git和subversion检查项目。使 用frotz运行基于文本的游戏。</p>
+<p>下载地址：酷♂安（0.55）<a href="http://www.coolapk.com/apk/com.termux" target="_blank" rel="noopener">http://www.coolapk.com/apk/com.termux</a></p>
+<p>F-droid（0.65）<a href="https://f-droid.org/packages/com.termux/" target="_blank" rel="noopener">https://f-droid.org/packages/com.termux/</a></p>
+<h2 id="游戏通用安装方法"><a href="#游戏通用安装方法" class="headerlink" title="游戏通用安装方法"></a>游戏通用安装方法</h2><div class="code-area-wrap"><div class="highlight-tools"><i class="fa fa-angle-down code-expand" aria-hidden="true"></i><div class="code_lang">Code</div><div class="copy-notice"></div><i class="fa fa-clipboard" aria-hidden="true"></i></div><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">apt update &amp;&amp; apt upgrade</span><br><span class="line">apt＋空格＋install＋空格＋游戏名字</span><br><span class="line">游戏名字</span><br></pre></td></tr></table></figure></div>
+
+<p>◐第一步</p>
+<p>apt update &amp;&amp; apt upgrade</p>
+<p>◐第二步（遇到输入y/n就输入y或者回车）<br>apt＋空格＋install＋空格＋游戏名字</p>
+<p>apt install angband</p>
+<p>◐第三步<br>游戏名字</p>
+<p>angband</p>
+<p>◐补充<br>在进行完第一步更新源后可输入<br>apt search game<br>查看以下所有游戏</p>
+<h2 id="游戏概览"><a href="#游戏概览" class="headerlink" title="游戏概览"></a>游戏概览</h2><table>
+<thead>
+<tr>
+<th>游戏名称</th>
+<th>游戏类型</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>angband</td>
+<td>Roguelike</td>
+</tr>
+<tr>
+<td>brogue</td>
+<td>Roguelike</td>
+</tr>
+<tr>
+<td>curseofwar</td>
+<td>RTS</td>
+</tr>
+<tr>
+<td>frotz</td>
+<td>IF</td>
+</tr>
+<tr>
+<td>glulxe</td>
+<td>IF</td>
+</tr>
+<tr>
+<td>gungo</td>
+<td>围棋人机博弈</td>
+</tr>
+<tr>
+<td>gunshoji</td>
+<td>日本棋人机博弈</td>
+</tr>
+<tr>
+<td>greed</td>
+<td>贪吃蛇</td>
+</tr>
+<tr>
+<td>moon-buggy</td>
+<td>跑酷</td>
+</tr>
+<tr>
+<td>moria</td>
+<td>Roguelike</td>
+</tr>
+</tbody></table>
+<h1 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h1><h2 id="游戏一【ANGBAND】"><a href="#游戏一【ANGBAND】" class="headerlink" title="游戏一【ANGBAND】"></a>游戏一【ANGBAND】</h2><p><a href="https://s2.ax1x.com/2019/08/06/ehCfUg.jpg" data-fancybox="group" data-caption="angband游戏界面" class="fancybox"><img alt="angband游戏界面" title="angband游戏界面" data-src="https://s2.ax1x.com/2019/08/06/ehCfUg.jpg" src="/img/loading.gif" class="lazyload"></a></p>
+<h3 id="安装方法"><a href="#安装方法" class="headerlink" title="安装方法"></a>安装方法</h3><p>和游戏通用方法一致</p>
+<div class="code-area-wrap"><div class="highlight-tools"><i class="fa fa-angle-down code-expand" aria-hidden="true"></i><div class="code_lang">Code</div><div class="copy-notice"></div><i class="fa fa-clipboard" aria-hidden="true"></i></div><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">apt update &amp;&amp; apt upgrade --更新并升级apt源（第一次打开软件时输入即可）</span><br><span class="line">apt install angband --安装游戏</span><br><span class="line">angband --运行游戏</span><br></pre></td></tr></table></figure></div>
+
+<p><a href="https://s2.ax1x.com/2019/08/06/ehPKMt.jpg" data-fancybox="group" data-caption="angband安装界面" class="fancybox"><img alt="angband安装界面" title="angband安装界面" data-src="https://s2.ax1x.com/2019/08/06/ehPKMt.jpg" src="/img/loading.gif" class="lazyload"></a></p>
+<h3 id="报错及解决方法"><a href="#报错及解决方法" class="headerlink" title="报错及解决方法"></a>报错及解决方法</h3><p>会在进入时若有这个报错</p>
+<div class="code-area-wrap"><div class="highlight-tools"><i class="fa fa-angle-down code-expand" aria-hidden="true"></i><div class="code_lang">Code</div><div class="copy-notice"></div><i class="fa fa-clipboard" aria-hidden="true"></i></div><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">angband: Angband needs at least an 80x24 &apos;curses&apos; screen</span><br></pre></td></tr></table></figure></div>
+
+<p><a href="https://s2.ax1x.com/2019/08/06/ehipFg.jpg" data-fancybox="group" data-caption="angband报错" class="fancybox"><img alt="angband报错" title="angband报错" data-src="https://s2.ax1x.com/2019/08/06/ehipFg.jpg" src="/img/loading.gif" class="lazyload"></a></p>
+<p>解决方法：双指缩小屏幕<br>（大概那么那么小就可以了，你们意会意会）<br>上面的是不（没）理（用）性的方法<br>真正理性的方法在这里</p>
+<p><a href="https://s2.ax1x.com/2019/08/06/ehi01A.jpg" data-fancybox="group" data-caption="angband报错解决方法" class="fancybox"><img alt="angband报错解决方法" title="angband报错解决方法" data-src="https://s2.ax1x.com/2019/08/06/ehi01A.jpg" src="/img/loading.gif" class="lazyload"></a></p>
+<p>输入resize查看当前终端尺寸<br>调到columns＞80和lines＞24就可以了<br>推荐使用横屏＋外接键盘（数据线的便宜，蓝牙的方便）</p>
+<h3 id="游戏类型"><a href="#游戏类型" class="headerlink" title="游戏类型"></a>游戏类型</h3><p>roguelike</p>
+<p><a href="https://s2.ax1x.com/2019/08/06/ehiB6I.jpg" data-fancybox="group" data-caption="angband游戏启动界面" class="fancybox"><img alt="angband游戏启动界面" title="angband游戏启动界面" data-src="https://s2.ax1x.com/2019/08/06/ehiB6I.jpg" src="/img/loading.gif" class="lazyload"></a></p>
+<h3 id="游戏简介"><a href="#游戏简介" class="headerlink" title="游戏简介"></a>游戏简介</h3><p>Angband是一款来自Umoria的地牢爬行roguelike计算机游戏。它基于J. R. R. Tolkien的着作，其中Angband是Morgoth的堡垒。当前版本的Angband适用于所有主要操作系统，包括Unix，Windows，Mac OS X和Android。<em>（引自维基百科）</em></p>
+<p>官网： <a href="http://rephial.org/" target="_blank" rel="noopener">http://rephial.org/</a><br>帮助文档： <a href="http://rephial.org/help/" target="_blank" rel="noopener">http://rephial.org/help/</a><br>玩法介绍： <a href="http://rephial.org/help/playing" target="_blank" rel="noopener">http://rephial.org/help/playing</a> </p>
+<p><a href="https://s2.ax1x.com/2019/08/06/ehigAS.jpg" data-fancybox="group" data-caption="angband帮助文档截取" class="fancybox"><img alt="angband帮助文档截取" title="angband帮助文档截取" data-src="https://s2.ax1x.com/2019/08/06/ehigAS.jpg" src="/img/loading.gif" class="lazyload"></a></p>
+<h3 id="游玩建议"><a href="#游玩建议" class="headerlink" title="游玩建议"></a>游玩建议</h3><p>这游戏玩法很复杂，具体怎么玩请看帮助文档，有很多键位，百度百科有很少的翻译内容 <a href="https://wk.baidu.com/view/5c3b6420580102020740be1e650e52ea5518ceaa?pcf=2" target="_blank" rel="noopener">https://wk.baidu.com/view/5c3b6420580102020740be1e650e52ea5518ceaa?pcf=2</a> 仅供参考，这么多我就不翻译了。当然，如若你觉得termux上运行麻烦，你可以在官网首页下载安卓版（梯），如果无t，可以在百度搜索下载。下面是谷歌商店链接。<br><a href="https://play.google.com/store/apps/details?id=org.angdroid.angband" target="_blank" rel="noopener">https://play.google.com/store/apps/details?id=org.angdroid.angband</a> </p>
+<p><a href="https://s2.ax1x.com/2019/08/06/ehFSnx.jpg" data-fancybox="group" data-caption="angband安卓版游戏界面" class="fancybox"><img alt="angband安卓版游戏界面" title="angband安卓版游戏界面" data-src="https://s2.ax1x.com/2019/08/06/ehFSnx.jpg" src="/img/loading.gif" class="lazyload"></a></p>
+<hr>
+<h2 id="游戏二-【brogue】"><a href="#游戏二-【brogue】" class="headerlink" title="游戏二.【brogue】"></a>游戏二.【brogue】</h2><p><a href="https://s2.ax1x.com/2019/08/06/ehQXdJ.jpg" data-fancybox="group" data-caption="brogue游戏界面" class="fancybox"><img alt="brogue游戏界面" title="brogue游戏界面" data-src="https://s2.ax1x.com/2019/08/06/ehQXdJ.jpg" src="/img/loading.gif" class="lazyload"></a></p>
+<h3 id="安装方法-1"><a href="#安装方法-1" class="headerlink" title="安装方法"></a>安装方法</h3><p>若常规安装方法显示404，请见下更换国内源，若长期使用termux建议一直更换国内源，以加快安装速度</p>
+<p>（需更换官方源至清华大学源，方法见下）</p>
+<div class="code-area-wrap"><div class="highlight-tools"><i class="fa fa-angle-down code-expand" aria-hidden="true"></i><div class="code_lang">Code</div><div class="copy-notice"></div><i class="fa fa-clipboard" aria-hidden="true"></i></div><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">pkg install vim --安装必要支持</span><br><span class="line">export EDITOR=vi --设置默认编辑器</span><br><span class="line">vi $PREFIX/etc/apt/sources.list --编辑源文件</span><br></pre></td></tr></table></figure></div>
+
+<p>第一步.安装必要支持</p>
+<p>pkg install vim</p>
+<p>第二步.设置默认编辑器</p>
+<p>export EDITOR=vi</p>
+<p><a href="https://s2.ax1x.com/2019/08/06/ehlMy8.jpg" data-fancybox="group" data-caption="设置默认编辑器" class="fancybox"><img alt="设置默认编辑器" title="设置默认编辑器" data-src="https://s2.ax1x.com/2019/08/06/ehlMy8.jpg" src="/img/loading.gif" class="lazyload"></a></p>
+<p>第二步.编辑源文件</p>
+<p>vi $PREFIX/etc/apt/sources.list</p>
+<p>输入i编辑</p>
+<p>将原来的 <a href="https://termux.net" target="_blank" rel="noopener">https://termux.net</a> 官方源替换为清华源</p>
+<p><a href="http://mirrors.tuna.tsinghua.edu.cn/termux" target="_blank" rel="noopener">http://mirrors.tuna.tsinghua.edu.cn/termux</a> </p>
+<p><a href="https://s2.ax1x.com/2019/08/06/ehlJFs.jpg" data-fancybox="group" data-caption="更换国内源" class="fancybox"><img alt="更换国内源" title="更换国内源" data-src="https://s2.ax1x.com/2019/08/06/ehlJFs.jpg" src="/img/loading.gif" class="lazyload"></a></p>
+<p>按住音量下＋c或者点击软键盘上的esc退出编辑</p>
+<p>保存并退出</p>
+<p>:wq</p>
+<p><a href="https://s2.ax1x.com/2019/08/06/ehlHfI.jpg" data-fancybox="group" data-caption="vim编辑器退出" class="fancybox"><img alt="vim编辑器退出" title="vim编辑器退出" data-src="https://s2.ax1x.com/2019/08/06/ehlHfI.jpg" src="/img/loading.gif" class="lazyload"></a></p>
+<p>然后按照常规方法安装并打开</p>
+<div class="code-area-wrap"><div class="highlight-tools"><i class="fa fa-angle-down code-expand" aria-hidden="true"></i><div class="code_lang">Code</div><div class="copy-notice"></div><i class="fa fa-clipboard" aria-hidden="true"></i></div><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">apt install brogue</span><br><span class="line">brogue</span><br></pre></td></tr></table></figure></div>
+
+<h3 id="报错及解决方法-1"><a href="#报错及解决方法-1" class="headerlink" title="报错及解决方法"></a>报错及解决方法</h3><p>和第一个游戏angband一样，若报错请在进入时缩小终端尺寸，方法一致。</p>
+<p><a href="https://s2.ax1x.com/2019/08/06/eh1Q91.jpg" data-fancybox="group" data-caption="缩小终端尺寸" class="fancybox"><img alt="缩小终端尺寸" title="缩小终端尺寸" data-src="https://s2.ax1x.com/2019/08/06/eh1Q91.jpg" src="/img/loading.gif" class="lazyload"></a></p>
+<h3 id="游戏类型-1"><a href="#游戏类型-1" class="headerlink" title="游戏类型"></a>游戏类型</h3><p>roguelike</p>
+<p><a href="https://s2.ax1x.com/2019/08/06/eh1UNd.jpg" data-fancybox="group" data-caption="brogue启动界面" class="fancybox"><img alt="brogue启动界面" title="brogue启动界面" data-src="https://s2.ax1x.com/2019/08/06/eh1UNd.jpg" src="/img/loading.gif" class="lazyload"></a></p>
+<h3 id="游戏简介-1"><a href="#游戏简介-1" class="headerlink" title="游戏简介"></a>游戏简介</h3><p>Brogue是由Brian Walker创建的免费roguelike计算机视频游戏。与其前任Rogue一样，Brogue的目标是让玩家下降到Dungeons of Doom的26楼，找回Yendor护身符，然后返回水面。玩家还可以选择深入挖掘地牢以获得更高的分数。在程序生成的地下城中存在怪物和陷阱，这项任务很复杂。<em>（引自维基百科）</em></p>
+<p>谷歌站点<br><a href="https://sites.google.com/site/broguegame/" target="_blank" rel="noopener">https://sites.google.com/site/broguegame/</a><br>汉化版源码（GitHub）<br><a href="https://github.com/jagt/brogue-chs-translate" target="_blank" rel="noopener">https://github.com/jagt/brogue-chs-translate</a> </p>
+<h3 id="游玩建议-1"><a href="#游玩建议-1" class="headerlink" title="游玩建议"></a>游玩建议</h3><p>先去网上下汉化版玩吧（win all），上面有下载地址，玩了之后就懂了，这里是部分操作按键。</p>
+<table>
+<thead>
+<tr>
+<th>按键</th>
+<th>动作</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>X</td>
+<td>自动探索</td>
+</tr>
+<tr>
+<td>Z</td>
+<td>休息</td>
+</tr>
+<tr>
+<td>S</td>
+<td>搜索周围</td>
+</tr>
+<tr>
+<td>I</td>
+<td>菜单</td>
+</tr>
+</tbody></table>
+<p>要外接键盘并竖屏</p>
+<hr>
+<h2 id="游戏三-【curse-of-war】"><a href="#游戏三-【curse-of-war】" class="headerlink" title="游戏三.【curse of war】"></a>游戏三.【curse of war】</h2><p><a href="https://s2.ax1x.com/2019/08/06/eh1w9I.jpg" data-fancybox="group" data-caption="curse of war游戏界面" class="fancybox"><img alt="curse of war游戏界面" title="curse of war游戏界面" data-src="https://s2.ax1x.com/2019/08/06/eh1w9I.jpg" src="/img/loading.gif" class="lazyload"></a></p>
+<h3 id="安装方法-2"><a href="#安装方法-2" class="headerlink" title="安装方法"></a>安装方法</h3><p>常规安装方法</p>
+<div class="code-area-wrap"><div class="highlight-tools"><i class="fa fa-angle-down code-expand" aria-hidden="true"></i><div class="code_lang">Code</div><div class="copy-notice"></div><i class="fa fa-clipboard" aria-hidden="true"></i></div><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">apt install curse of war --安装游戏</span><br><span class="line">curse of war --运行游戏</span><br></pre></td></tr></table></figure></div>
+
+<h3 id="游戏类型-2"><a href="#游戏类型-2" class="headerlink" title="游戏类型"></a>游戏类型</h3><p>RTS(real time strategy game)即时战略游戏</p>
+<h3 id="游戏简介-2"><a href="#游戏简介-2" class="headerlink" title="游戏简介"></a>游戏简介</h3><p>《战争诅咒》是一款针对Linux的快节奏行动开源战略游戏，最初是使用ncurses用户界面实现的。还提供SDL图形版本。核心博弈机制与第一次世界大战到第二次世界大战的类型非常接近，但是，没有明确的历史时期的参考。与大多数实时战略游戏不同，《战争诅咒》中的玩家并不控制部队，而是专注于高层战略规划：建设基础设施、保护资源和移动军队。这张地图是六角形的。*&lt;引自linuxlinks，译自百度翻译&gt;*</p>
+<p>官网<br><a href="https://a-nikolaev.github.io/curseofwar/" target="_blank" rel="noopener">https://a-nikolaev.github.io/curseofwar/</a><br>玩法<br><a href="https://a-nikolaev.github.io/curseofwar/howtoplay/" target="_blank" rel="noopener">https://a-nikolaev.github.io/curseofwar/howtoplay/</a> </p>
+<p><a href="https://s2.ax1x.com/2019/08/06/eh1Djf.jpg" data-fancybox="group" data-caption="curse of war游戏内截图" class="fancybox"><img alt="curse of war游戏内截图" title="curse of war游戏内截图" data-src="https://s2.ax1x.com/2019/08/06/eh1Djf.jpg" src="/img/loading.gif" class="lazyload"></a></p>
+<h3 id="游玩建议-2"><a href="#游玩建议-2" class="headerlink" title="游玩建议"></a>游玩建议</h3><p>玩法来自上述网站，下由百度翻译直译（未查）</p>
+<p>游戏如何运作<br>通常，游戏从地图上的4个小国家开始。你开始作为绿色国家的统治者，你的目标是征服整个地图。<br>地图是由六边形瓦片构成的。他们是：<br>/^ 山，不能居住<br>/$\像美元的这个也无法居住。这是你们国家的黄金之源。控制一个矿井，用你的军队包围它<br>N个村庄，人口增长最慢（10%）<br>I=城镇，平均人口增长（20%）<br>W城堡，人口高速增长（30%）</p>
+<p>人是你的首要资源。繁荣对你的胜利至关重要。<br>每个瓷砖最多可以支持499人来自每个国家。当来自多个国家的人占据同一块瓷砖时，他们就打架。瓷砖拥有最高人口的国家被称为瓦片拥有者。<br>瓷砖所有者的数量显示在所有草地瓷砖上：<br>. 1—3…4—6…7—12：13—25：26—50.51—100：101—200：：201—400：：400—499<br>人们从人口密集的瓷砖迁移到人口较少的瓷砖。<br>人口只在城市中生长。在村庄10%，城镇20%，堡垒30%。通过控制城市，控制他们的周边领土。</p>
+<p>旗帜<br>每个国家都可以在地图上挂上旗帜。标志改变迁移率，从而使你国的人们开始在国旗上聚集。玩家的旗帜在瓦片右边显示为白色“P”。计算机对手的旗帜在瓷砖的左侧显示为“X”。国旗可以用来增加你自己城市的人口，也可以用来征服外国领土。<br>当国家为一座城市而战，如果对保卫者的军队造成重大破坏，那么这个城市可以被摧毁：堡垒变成城镇，城镇变成村庄，村庄被侵略者完全烧毁。</p>
+<p>国家<br>电脑对手的个性不同，影响他们的战斗方式。</p>
+<p>控制<br>箭头键和[H]，[j]，[k]，[L]用于移动光标<br>[R]或[V]建造村庄&gt;城镇&gt;城堡<br>[空间]添加/删除标志<br>[X]删除你所有的旗帜<br>[C]删除你的一半旗帜<br>[F]更快<br>[Q]退出</p>
+<hr>
+<h2 id="游戏四-【frotz】"><a href="#游戏四-【frotz】" class="headerlink" title="游戏四.【frotz】"></a>游戏四.【frotz】</h2><p><a href="https://s2.ax1x.com/2019/08/06/eh16Hg.jpg" data-fancybox="group" data-caption="frotz游戏截图" class="fancybox"><img alt="frotz游戏截图" title="frotz游戏截图" data-src="https://s2.ax1x.com/2019/08/06/eh16Hg.jpg" src="/img/loading.gif" class="lazyload"></a></p>
+<h3 id="安装方法-3"><a href="#安装方法-3" class="headerlink" title="安装方法"></a>安装方法</h3><p>和通用方式稍微有一点区别</p>
+<div class="code-area-wrap"><div class="highlight-tools"><i class="fa fa-angle-down code-expand" aria-hidden="true"></i><div class="code_lang">Code</div><div class="copy-notice"></div><i class="fa fa-clipboard" aria-hidden="true"></i></div><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">apt install frotz --安装游戏frotz</span><br><span class="line">zgames --运行</span><br></pre></td></tr></table></figure></div>
+
+<p>apt install frotz</p>
+<p>zgames</p>
+<p><a href="https://s2.ax1x.com/2019/08/06/eh1R4s.jpg" data-fancybox="group" data-caption="zgames游戏界面" class="fancybox"><img alt="zgames游戏界面" title="zgames游戏界面" data-src="https://s2.ax1x.com/2019/08/06/eh1R4s.jpg" src="/img/loading.gif" class="lazyload"></a></p>
+<h3 id="游戏类型-3"><a href="#游戏类型-3" class="headerlink" title="游戏类型"></a>游戏类型</h3><p>IF</p>
+<h3 id="游玩建议-3"><a href="#游玩建议-3" class="headerlink" title="游玩建议"></a>游玩建议</h3><p>都是英文的，可以练习你的英语能力。</p>
+<hr>
+<h2 id="游戏五-【glulxe】"><a href="#游戏五-【glulxe】" class="headerlink" title="游戏五.【glulxe】"></a>游戏五.【glulxe】</h2><p>和上一个frotz一样，与其说是游戏或游戏集合不如说是游戏平台</p>
+<h3 id="安装方法-4"><a href="#安装方法-4" class="headerlink" title="安装方法"></a>安装方法</h3><p>通用安装方式</p>
+<div class="code-area-wrap"><div class="highlight-tools"><i class="fa fa-angle-down code-expand" aria-hidden="true"></i><div class="code_lang">Code</div><div class="copy-notice"></div><i class="fa fa-clipboard" aria-hidden="true"></i></div><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">apt install glulxe --安装游戏glulxe</span><br><span class="line">glulxe --运行游戏</span><br></pre></td></tr></table></figure></div>
+
+<h3 id="游戏简介-3"><a href="#游戏简介-3" class="headerlink" title="游戏简介"></a>游戏简介</h3><p>Glulx是一款32位便携式虚拟机，用于编写和播放交互式小说。它由Andrew Plotkin设计，以减轻古老的Z-machine格式中的一些限制。例如，Z-machine为16位整数提供本机支持，而Glulx本身支持32位整数。 Inform编译器从版本6.30开始，可以生成Z-machine或Glulx故事文件。</p>
+<p><a href="https://www.eblong.com/zarf/glulx/" target="_blank" rel="noopener">https://www.eblong.com/zarf/glulx/</a> </p>
+<h3 id="游戏类型-4"><a href="#游戏类型-4" class="headerlink" title="游戏类型"></a>游戏类型</h3><p>IF</p>
+<h3 id="游玩建议-4"><a href="#游玩建议-4" class="headerlink" title="游玩建议"></a>游玩建议</h3><p>因我不是if和text only的爱好者，所以这个就没有搞了，但是据朋友说这个glulxe很好用。（上面的网站是我乱在谷歌找的一个，有兴趣的可以谷歌自己查）</p>
+<hr>
+<h2 id="游戏六-【gnugo】"><a href="#游戏六-【gnugo】" class="headerlink" title="游戏六.【gnugo】"></a>游戏六.【gnugo】</h2><p><a href="https://s2.ax1x.com/2019/08/06/eh15vV.jpg" data-fancybox="group" data-caption="gnugo游戏界面" class="fancybox"><img alt="gnugo游戏界面" title="gnugo游戏界面" data-src="https://s2.ax1x.com/2019/08/06/eh15vV.jpg" src="/img/loading.gif" class="lazyload"></a></p>
+<h3 id="安装方法-5"><a href="#安装方法-5" class="headerlink" title="安装方法"></a>安装方法</h3><p>通用安装方式</p>
+<div class="code-area-wrap"><div class="highlight-tools"><i class="fa fa-angle-down code-expand" aria-hidden="true"></i><div class="code_lang">Code</div><div class="copy-notice"></div><i class="fa fa-clipboard" aria-hidden="true"></i></div><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">apt install gnugo --安装游戏gnugo</span><br><span class="line">gnugo --运行游戏</span><br></pre></td></tr></table></figure></div>
+
+<h3 id="游戏类型-5"><a href="#游戏类型-5" class="headerlink" title="游戏类型"></a>游戏类型</h3><p>围棋人机博弈</p>
+<h3 id="游戏简介-4"><a href="#游戏简介-4" class="headerlink" title="游戏简介"></a>游戏简介</h3><p>一个开源的人机博弈对战围棋游戏</p>
+<p><a href="http://www.gnu.org/software/gnugo/gnugo" target="_blank" rel="noopener">http://www.gnu.org/software/gnugo/gnugo</a> </p>
+<p><a href="https://s2.ax1x.com/2019/08/06/eh17bF.jpg" data-fancybox="group" data-caption="gnugo游戏界面" class="fancybox"><img alt="gnugo游戏界面" title="gnugo游戏界面" data-src="https://s2.ax1x.com/2019/08/06/eh17bF.jpg" src="/img/loading.gif" class="lazyload"></a></p>
+<h3 id="游玩建议-5"><a href="#游玩建议-5" class="headerlink" title="游玩建议"></a>游玩建议</h3><p>直接输入字母＋数字就可以和机器下围棋，据说还是很强的，有九段棋力。</p>
+<hr>
+<h2 id="游戏七-【gnushogi】"><a href="#游戏七-【gnushogi】" class="headerlink" title="游戏七.【gnushogi】"></a>游戏七.【gnushogi】</h2><p><a href="https://s2.ax1x.com/2019/08/06/eh1qUJ.jpg" data-fancybox="group" data-caption="gnushogi帮助界面" class="fancybox"><img alt="gnushogi帮助界面" title="gnushogi帮助界面" data-src="https://s2.ax1x.com/2019/08/06/eh1qUJ.jpg" src="/img/loading.gif" class="lazyload"></a></p>
+<h3 id="安装方法-6"><a href="#安装方法-6" class="headerlink" title="安装方法"></a>安装方法</h3><p>通用安装方法</p>
+<div class="code-area-wrap"><div class="highlight-tools"><i class="fa fa-angle-down code-expand" aria-hidden="true"></i><div class="code_lang">Code</div><div class="copy-notice"></div><i class="fa fa-clipboard" aria-hidden="true"></i></div><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">apt install gnushogi --安装游戏gnushogi</span><br><span class="line">gnushogi --运行游戏</span><br></pre></td></tr></table></figure></div>
+
+<h3 id="游戏类型-6"><a href="#游戏类型-6" class="headerlink" title="游戏类型"></a>游戏类型</h3><p>人机棋类博弈对战</p>
+<h3 id="游戏简介-5"><a href="#游戏简介-5" class="headerlink" title="游戏简介"></a>游戏简介</h3><p>玩一种日本棋</p>
+<p><a href="http://www.gnu.org/software/gnushogi/manual/Index" target="_blank" rel="noopener">http://www.gnu.org/software/gnushogi/manual/Index</a> </p>
+<h3 id="游玩建议-6"><a href="#游玩建议-6" class="headerlink" title="游玩建议"></a>游玩建议</h3><p>我始终不懂它是个什么东西，日本棋不懂呀，有懂的朋友可以玩。</p>
+<hr>
+<h2 id="游戏八-【greed】"><a href="#游戏八-【greed】" class="headerlink" title="游戏八.【greed】"></a>游戏八.【greed】</h2><p><a href="https://s2.ax1x.com/2019/08/06/eh3QaQ.jpg" data-fancybox="group" data-caption="greed游戏界面" class="fancybox"><img alt="greed游戏界面" title="greed游戏界面" data-src="https://s2.ax1x.com/2019/08/06/eh3QaQ.jpg" src="/img/loading.gif" class="lazyload"></a></p>
+<h3 id="安装方法-7"><a href="#安装方法-7" class="headerlink" title="安装方法"></a>安装方法</h3><p>通用安装方法</p>
+<div class="code-area-wrap"><div class="highlight-tools"><i class="fa fa-angle-down code-expand" aria-hidden="true"></i><div class="code_lang">Code</div><div class="copy-notice"></div><i class="fa fa-clipboard" aria-hidden="true"></i></div><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">apt install greed --安装游戏greed</span><br><span class="line">greed --运行游戏</span><br></pre></td></tr></table></figure></div>
+
+<h3 id="游戏类型-7"><a href="#游戏类型-7" class="headerlink" title="游戏类型"></a>游戏类型</h3><p>贪吃蛇</p>
+<h3 id="游戏简介-6"><a href="#游戏简介-6" class="headerlink" title="游戏简介"></a>游戏简介</h3><p>greed贪婪是Pac-Man的和特隆类似于上面MyMan的克隆，但它提供了彩色文本界面。玩家使用键盘箭头在他/她移动时在任何方向上尽可能多地吃数字，吃掉的数字的数量等于特定方向上的步数。</p>
+<h3 id="游玩建议-7"><a href="#游玩建议-7" class="headerlink" title="游玩建议"></a>游玩建议</h3><p>@ 符，则代表你当前所处的位置。方向键移动你的位置，所吃的数字便是移动的步数，无数可吃或触碰边界，游戏失败。</p>
+<hr>
+<h2 id="游戏九-【moon-buggy】"><a href="#游戏九-【moon-buggy】" class="headerlink" title="游戏九.【moon-buggy】"></a>游戏九.【moon-buggy】</h2><p><a href="https://s2.ax1x.com/2019/08/06/eh3tMV.jpg" data-fancybox="group" data-caption="moon-buggy游戏界面" class="fancybox"><img alt="moon-buggy游戏界面" title="moon-buggy游戏界面" data-src="https://s2.ax1x.com/2019/08/06/eh3tMV.jpg" src="/img/loading.gif" class="lazyload"></a></p>
+<h3 id="安装方法-8"><a href="#安装方法-8" class="headerlink" title="安装方法"></a>安装方法</h3><p>通用安装方法</p>
+<div class="code-area-wrap"><div class="highlight-tools"><i class="fa fa-angle-down code-expand" aria-hidden="true"></i><div class="code_lang">Code</div><div class="copy-notice"></div><i class="fa fa-clipboard" aria-hidden="true"></i></div><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">apt install moon-buggy --安装游戏moon-buggy</span><br><span class="line">moon-buggy --运行游戏</span><br></pre></td></tr></table></figure></div>
+
+<h3 id="游戏类型-8"><a href="#游戏类型-8" class="headerlink" title="游戏类型"></a>游戏类型</h3><p>跑酷</p>
+<h3 id="游戏简介-7"><a href="#游戏简介-7" class="headerlink" title="游戏简介"></a>游戏简介</h3><p>Moonbuggy 的场景设置在月球表面上，而你驾驶着一辆月球小车躲避火山口和打各种怪。</p>
+<p><a href="https://s2.ax1x.com/2019/08/06/eh30IJ.jpg" data-fancybox="group" data-caption="moon-buggy游戏界面" class="fancybox"><img alt="moon-buggy游戏界面" title="moon-buggy游戏界面" data-src="https://s2.ax1x.com/2019/08/06/eh30IJ.jpg" src="/img/loading.gif" class="lazyload"></a></p>
+<h3 id="游玩建议-8"><a href="#游玩建议-8" class="headerlink" title="游玩建议"></a>游玩建议</h3><p>进入游戏后先输入y确认开始游戏，j跳跃、a或者l开火。有点延迟，所以要把握好跳的时机。听酷安的一个大佬说一直没有怪，我手残也就不清楚啦，希望大家谁看见怪了回复一下。哦对，建议横屏＋外接键盘。</p>
+<hr>
+<h2 id="游戏十-【moria】"><a href="#游戏十-【moria】" class="headerlink" title="游戏十.【moria】"></a>游戏十.【moria】</h2><p><a href="https://s2.ax1x.com/2019/08/06/eh35id.jpg" data-fancybox="group" data-caption="moria游戏界面" class="fancybox"><img alt="moria游戏界面" title="moria游戏界面" data-src="https://s2.ax1x.com/2019/08/06/eh35id.jpg" src="/img/loading.gif" class="lazyload"></a></p>
+<h3 id="安装方法-9"><a href="#安装方法-9" class="headerlink" title="安装方法"></a>安装方法</h3><p>通用安装方法</p>
+<div class="code-area-wrap"><div class="highlight-tools"><i class="fa fa-angle-down code-expand" aria-hidden="true"></i><div class="code_lang">Code</div><div class="copy-notice"></div><i class="fa fa-clipboard" aria-hidden="true"></i></div><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">apt install moria --安装游戏moria</span><br><span class="line">moria --运行游戏</span><br></pre></td></tr></table></figure></div>
+
+<h3 id="游戏类型-9"><a href="#游戏类型-9" class="headerlink" title="游戏类型"></a>游戏类型</h3><p>rougelike</p>
+<p><a href="https://s2.ax1x.com/2019/08/06/eh3bsf.jpg" data-fancybox="group" data-caption="moria游戏界面" class="fancybox"><img alt="moria游戏界面" title="moria游戏界面" data-src="https://s2.ax1x.com/2019/08/06/eh3bsf.jpg" src="/img/loading.gif" class="lazyload"></a></p>
+<h3 id="游戏简介-8"><a href="#游戏简介-8" class="headerlink" title="游戏简介"></a>游戏简介</h3><p>The Dungeons of Moria, or just Moria, is a roguelike computer game inspired by J. R. R. Tolkien’s novel The Lord of the Rings. The game’s objective is to kill a Balrog, presumably Durin’s Bane, deep within the Mines of Moria. A later port of Moria called Umoria (UNIX Moria) inspired the Angband roguelike game. This game influenced the preliminary design of Blizzard Entertainment’s Diablo.简单来说和上面第一个第二个游戏一致，属rougelike的鼻祖。（未翻译）</p>
+<p>维基百科<a href="https://en.m.wikipedia.org/wiki/Moria_(video_game)" target="_blank" rel="noopener">https://en.m.wikipedia.org/wiki/Moria_(video_game)</a> </p>
+<p>官网<a href="http://remarque.org/~grabiner/moria" target="_blank" rel="noopener">http://remarque.org/~grabiner/moria</a> </p>
+<h1 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h1><p>文章由本人在酷安首发，转载请注明版权。</p>
+<p>写文章不易，若你觉得好，可以请我喝杯阔乐！下方有赞助</p>
+<p>有什么问题可以在下方评论区提出，我会一一回复。</p>
+<p>感谢阅读！</p>
+</div></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">miao OAO</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://miaooao.top/2019/08/06/Termux1/">https://miaooao.top/2019/08/06/Termux1/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://miaooao.top">miao OAO</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/0基础Termux/">0基础Termux    </a></div><div class="post_share"><div class="social-share" data-image="https://i.loli.net/2020/03/14/KjeSy2LlBOcE8JD.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js"></script></div></div><div class="post-reward"><a class="reward-button button--primary button--animated"> <i class="fa fa-qrcode"></i> 打赏<div class="reward-main"><ul class="reward-all"><li class="reward-item"><img class="lazyload post-qr-code__img" src="/img/wechat.jpg" alt="微信"><div class="post-qr-code__desc">微信</div></li><li class="reward-item"><img class="lazyload post-qr-code__img" src="/img/alipay.jpg" alt="支付宝"><div class="post-qr-code__desc">支付宝</div></li></ul></div></a></div><nav class="pagination_post" id="pagination"><div class="prev-post pull-full"><a href="/2019/08/07/wangzhi/"><img class="prev_cover lazyload" data-src="https://i.loli.net/2020/03/14/8GpL27HBIZda46Y.jpg" onerror="onerror=null;src='/img/404.jpg'"><div class="label">上一篇</div><div class="prev_info"><span>【干货】优秀实用的网址整理分享-1</span></div></a></div></nav><hr><div id="post-comment"><div class="comment_headling"><i class="fa fa-comments fa-fw" aria-hidden="true"></i><span> 评论</span></div><div class="vcomment" id="vcomment"></div><script src="https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js"></script><script>var notify = true == true ? true : false;
+var verify = true == true ? true : false;
+var GUEST_INFO = ['nick','mail','link'];
+var guest_info = 'nick,mail'.split(',').filter(function(item){
+  return GUEST_INFO.indexOf(item) > -1
+});
+guest_info = guest_info.length == 0 ? GUEST_INFO :guest_info;
+
+window.valine = new Valine({
+  el:'#vcomment',
+  notify:notify,
+  verify:verify,
+  appId:'uhJ6g1vUUFSPD8jCax2c4oQn-MdYXbMMI',
+  appKey:'Phoph6RscjlkbFiqbNTr1BbY',
+  placeholder:'留下你想说的话吧miao OAO',
+  avatar:'monsterid',
+  guest_info:guest_info,
+  pageSize:'10',
+  lang:'zh-cn',
+  recordIP: true
+});</script></div></div></main><footer id="footer" style="background-image: url(https://i.loli.net/2020/03/14/KjeSy2LlBOcE8JD.jpg)" data-type="photo"><div id="footer-wrap"><div class="copyright">&copy;2018 - 2020 By miao OAO</div><div class="footer_custom_text">欢迎来到miao OAO，感谢访问！</div><div class="icp"><a href="http://www.beian.miit.gov.cn"><img class="icp-icon" src="/img/icp.png"><span>蜀ICP备20005991号-1</span></a></div></div></footer></div><section class="rightside" id="rightside"><div id="rightside-config-hide"><i class="fa fa-book" id="readmode" title="阅读模式"></i><i class="fa fa-plus" id="font_plus" title="放大字体"></i><i class="fa fa-minus" id="font_minus" title="缩小字体"></i><a class="translate_chn_to_cht" id="translateLink" href="javascript:translatePage();" title="简繁转换" target="_self">繁</a><i class="darkmode fa fa-moon-o" id="darkmode" title="夜间模式"></i></div><div id="rightside-config-show"><div id="rightside_config" title="设置"><i class="fa fa-cog" aria-hidden="true"></i></div><a id="to_comment" href="#post-comment" title="直达评论"><i class="scroll_to_comment fa fa-comments">  </i></a><i class="fa fa-list-ul close" id="mobile-toc-button" title="目录" aria-hidden="true"></i><i class="fa fa-arrow-up" id="go-up" title="回到顶部" aria-hidden="true"></i></div></section><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/live2d-widget/autoload.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><script id="canvas_nest" color="55,55,55" opacity="0.3" zindex="-1" count="99" mobile="true" src="https://cdn.jsdelivr.net/gh/jerryc127/butterfly_cdn@2.1.0/js/canvas-nest.js"></script><script src="https://cdn.jsdelivr.net/npm/activate-power-mode/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = true; 
+document.body.addEventListener('input', POWERMODE);
+</script><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page@latest/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/lazysizes@latest/lazysizes.min.js" async></script><script src="https://cdn.jsdelivr.net/gh/jerryc127/butterfly_cdn@2.1.0/js/click_heart.js"></script><script src="https://cdn.jsdelivr.net/gh/jerryc127/butterfly_cdn@2.1.0/js/ClickShowText.js"></script><div class="search-dialog" id="local-search"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="输入关键词搜索文章miao OAO"></div></div></div><hr><div id="local-search-results"><div id="local-hits"></div><div id="local-stats"><div class="local-search-stats__hr" id="hr"><span>由</span> <a href="https://miaooao.top" style="color:#49B1F5;">miaooao-localsearch</a>
+ <span>提供支持</span></div></div></div><span class="search-close-button"><i class="fa fa-times"></i></span></div><div class="search-mask"></div></body></html>
