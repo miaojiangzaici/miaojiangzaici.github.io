@@ -1,24 +1,17 @@
 $(function () {
   var loadFlag = false
   $('a.social-icon.search').on('click', function () {
-    $('body').css('width', '100%')
-    $('body').css('overflow', 'hidden')
-    $('.search-dialog').animate({}, function () {
-      $('.search-dialog').css({
-        'display': 'block',
-        'animation': 'titlescale 0.5s'
-      })
-    })
-          $('#local-search-input input').focus()
-  
-          $('.search-mask').fadeIn();
+    $('body').css({ width: '100%', overflow: 'hidden' })
+    $('.search-dialog').css('display', 'block')
+    $('#local-search-input input').focus()
+    $('.search-mask').fadeIn()
     if (!loadFlag) {
       search(GLOBAL_CONFIG.localSearch.path)
       loadFlag = true
     }
 
     // shortcut: ESC
-    document.addEventListener('keydown', function f(event) {
+    document.addEventListener('keydown', function f (event) {
       if (event.code === 'Escape') {
         closeSearch()
         document.removeEventListener('keydown', f)
@@ -27,17 +20,26 @@ $(function () {
   })
 
   var closeSearch = function () {
-    $('body').css('overflow', 'auto')
-    $('.search-dialog').animate({}, function () {
-      $('.search-dialog').css({
-        'display': 'none'
-      })
+    $('body').css('width', '')
+    $('body').css('overflow', '')
+    $('.search-dialog').css({
+      animation: 'search_close .5s'
     })
-    $('.search-mask').fadeOut();
-  }
-  $('.search-mask, .search-close-button').on('click', closeSearch)
 
-  function search(path) {
+    $('.search-dialog').animate({}, function () {
+      setTimeout(function () {
+        $('.search-dialog').css({
+          animation: '',
+          display: 'none'
+        })
+      }, 500)
+    })
+
+    $('.search-mask').fadeOut()
+  }
+  $('.search-mask, .search-close-button').on('click touchstart', closeSearch)
+
+  function search (path) {
     $.ajax({
       url: GLOBAL_CONFIG.root + path,
       dataType: 'xml',

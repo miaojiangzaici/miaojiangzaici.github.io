@@ -1,8 +1,0 @@
-﻿最高分记录位置
-Chrome\User Data\Default\Local Storage下
-
-game_manager.js
-127行 设置方块合并到多少分获胜
-
-html_actuator.js
-58-63行 设置方块样式
