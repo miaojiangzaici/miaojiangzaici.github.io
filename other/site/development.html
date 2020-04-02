@@ -1,0 +1,483 @@
+
+<style>
+@import url(http://fonts.googleapis.com/css?family=Noto+Sans);
+body {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 5%;
+  font-size: 100%;
+  font-family: "Noto Sans", sans-serif;
+  color: #eee9dc;
+  background: #48b379;
+}
+
+h2 {
+  margin: 3em 0 0 0;
+  font-size: 1.5em;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+/* -------------------------------------
+ * timeline
+ * ------------------------------------- */
+#timeline {
+  list-style: none;
+  margin: 50px 0 30px 120px;
+  padding-left: 30px;
+  border-left: 8px solid #eee9dc;
+}
+#timeline li {
+  margin: 40px 0;
+  position: relative;
+}
+#timeline p {
+  margin: 0 0 15px;
+}
+
+.date {
+  margin-top: -10px;
+  top: 50%;
+  left: -158px;
+  font-size: 0.95em;
+  line-height: 20px;
+  position: absolute;
+}
+
+.circle {
+  margin-top: -10px;
+  top: 50%;
+  left: -44px;
+  width: 10px;
+  height: 10px;
+  background: #48b379;
+  border: 5px solid #eee9dc;
+  border-radius: 50%;
+  display: block;
+  position: absolute;
+}
+
+.content {
+  max-height: 20px;
+  padding: 50px 20px 0;
+  border-color: transparent;
+  border-width: 2px;
+  border-style: solid;
+  border-radius: 0.5em;
+  position: relative;
+}
+.content:before, .content:after {
+  content: "";
+  width: 0;
+  height: 0;
+  border: solid transparent;
+  position: absolute;
+  pointer-events: none;
+  right: 100%;
+}
+.content:before {
+  border-right-color: inherit;
+  border-width: 20px;
+  top: 50%;
+  margin-top: -20px;
+}
+.content:after {
+  border-right-color: #48b379;
+  border-width: 17px;
+  top: 50%;
+  margin-top: -17px;
+}
+.content p {
+  max-height: 0;
+  color: transparent;
+  text-align: justify;
+  word-break: break-word;
+  hyphens: auto;
+  overflow: hidden;
+}
+
+label {
+  font-size: 1.3em;
+  position: absolute;
+  z-index: 100;
+  cursor: pointer;
+  top: 20px;
+  transition: transform 0.2s linear;
+}
+
+.radio {
+  display: none;
+}
+
+.radio:checked + .relative label {
+  cursor: auto;
+  transform: translateX(42px);
+}
+.radio:checked + .relative .circle {
+  background: #f98262;
+}
+.radio:checked ~ .content {
+  max-height: 180px;
+  border-color: #eee9dc;
+  margin-right: 20px;
+  transform: translateX(20px);
+  transition: max-height 0.4s linear, border-color 0.5s linear, transform 0.2s linear;
+}
+.radio:checked ~ .content p {
+  max-height: 200px;
+  color: #eee9dc;
+  transition: color 0.3s linear 0.3s;
+}
+
+/* -------------------------------------
+ * mobile phones (vertical version only)
+ * ------------------------------------- */
+@media screen and (max-width: 767px) {
+  #timeline {
+    margin-left: 0;
+    padding-left: 0;
+    border-left: none;
+  }
+  #timeline li {
+    margin: 50px 0;
+  }
+
+  label {
+    width: 85%;
+    font-size: 1.1em;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    display: block;
+    transform: translateX(18px);
+  }
+
+  .content {
+    padding-top: 45px;
+    border-color: #eee9dc;
+  }
+  .content:before, .content:after {
+    border: solid transparent;
+    bottom: 100%;
+  }
+  .content:before {
+    border-bottom-color: inherit;
+    border-width: 17px;
+    top: -16px;
+    left: 50px;
+    margin-left: -17px;
+  }
+  .content:after {
+    border-bottom-color: #48b379;
+    border-width: 20px;
+    top: -20px;
+    left: 50px;
+    margin-left: -20px;
+  }
+  .content p {
+    font-size: 0.9em;
+    line-height: 1.4;
+  }
+
+  .circle, .date {
+    display: none;
+  }
+}
+</style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
+</head>
+<body>
+  <h2>网站发展历史</h2>
+<p>下表记录了关于网站miao OAO的各种小修改记录</p>
+<ul id='timeline'>
+  <li class='work'>
+    <input class='radio' id='work22' name='works' type='radio' checked>
+    <div class="relative">
+      <label for='work22'>更改Tidio在线聊天</label>
+      <span class='date'>28 Mar 2020</span>
+      <span class='circle'></span>
+    </div>
+    <div class='content'>
+      <p>
+        Tidio的确好用一些，就是有些臃肿（指的是不太简洁），暂时使用。
+      </p>
+    </div>
+  </li>
+  <li class='work'>
+    <input class='radio' id='work21' name='works' type='radio' checked>
+    <div class="relative">
+      <label for='work21'>添加自定义鼠标样式</label>
+      <span class='date'>27 Mar 2020</span>
+      <span class='circle'></span>
+    </div>
+    <div class='content'>
+      <p>
+        暂且加了奥日的鼠标，备用的有初音的和喵的。
+      </p>
+    </div>
+  </li>
+  <li class='work'>
+    <input class='radio' id='work20' name='works' type='radio' checked>
+    <div class="relative">
+      <label for='work20'>增加樱花、雪花背景可选项</label>
+      <span class='date'>23 Mar 2020</span>
+      <span class='circle'></span>
+    </div>
+    <div class='content'>
+      <p>
+        在搁置按钮逻辑，不知道加在哪里可能合适一些，而且有点晃，算了。
+      </p>
+    </div>
+  </li>
+  <li class='work'>
+    <input class='radio' id='work19' name='works' type='radio' checked>
+    <div class="relative">
+      <label for='work19'>接入Daovoice可选插件</label>
+      <span class='date'>23 Mar 2020</span>
+      <span class='circle'></span>
+    </div>
+    <div class='content'>
+      <p>
+        体验感受一般，纯属跟风使用，后取消。
+      </p>
+    </div>
+  </li>
+  <li class='work'>
+    <input class='radio' id='work18' name='works' type='radio' checked>
+    <div class="relative">
+      <label for='work18'>优化看板娘显示</label>
+      <span class='date'>22 Mar 2020</span>
+      <span class='circle'></span>
+    </div>
+    <div class='content'>
+      <p>
+        看板娘2代它来了，使用正常加载方式。
+      </p>
+    </div>
+  </li>
+  <li class='work'>
+    <input class='radio' id='work17' name='works' type='radio' checked>
+    <div class="relative">
+      <label for='work17'>接入谷歌广告</label>
+      <span class='date'>19 Mar 2020</span>
+      <span class='circle'></span>
+    </div>
+    <div class='content'>
+      <p>
+        百度广告联盟也申请通过了，但是还是选择了谷歌广告联盟。
+      </p>
+    </div>
+  </li>
+  <li class='work'>
+    <input class='radio' id='work16' name='works' type='radio' checked>
+    <div class="relative">
+      <label for='work16'>接入腾讯云CDN</label>
+      <span class='date'>16 Mar 2020</span>
+      <span class='circle'></span>
+    </div>
+    <div class='content'>
+      <p>
+        国内CDN服务，腾讯云有前几个月的50G礼包，先用吧，白嫖。
+      </p>
+    </div>
+  </li>
+  <li class='work'>
+    <input class='radio' id='work15' name='works' type='radio' checked>
+    <div class="relative">
+      <label for='work15'>优化压缩部分文件、提高访问速度</label>
+      <span class='date'>14 Mar 2020</span>
+      <span class='circle'></span>
+    </div>
+    <div class='content'>
+      <p>
+        自动的不是太全面，于是手动又对部分未压缩文件进行了代码压缩。
+      </p>
+    </div>
+  </li>
+  <li class='work'>
+    <input class='radio' id='work14' name='works' type='radio' checked>
+    <div class="relative">
+      <label for='work14'>添加评论后台</label>
+      <span class='date'>14 Mar 2020</span>
+      <span class='circle'></span>
+    </div>
+    <div class='content'>
+      <p>
+        部署了Valine-Admin，增加了自定义的评论回复通知和评论后台。
+      </p>
+    </div>
+  </li>
+  <li class='work'>
+    <input class='radio' id='work13' name='works' type='radio' checked>
+    <div class="relative">
+      <label for='work13'>域名备案成功</label>
+      <span class='date'>12 Mar 2020</span>
+      <span class='circle'></span>
+    </div>
+    <div class='content'>
+      <p>
+        阿里云备案效率很高、回复很热情，奈何四川本地备案中心出现技术问题，故前后共计13天时间。
+      </p>
+    </div>
+  </li>
+  <li class='work'>
+    <input class='radio' id='work12' name='works' type='radio' checked>
+    <div class="relative">
+      <label for='work12'>接入阿里云ECS备份</label>
+      <span class='date'>11 Mar 2020</span>
+      <span class='circle'></span>
+    </div>
+    <div class='content'>
+      <p>
+        闲置一个白嫖低配置服务器，用来挂机加备份。
+      </p>
+    </div>
+  </li>
+  <li class='work'>
+    <input class='radio' id='work11' name='works' type='radio' checked>
+    <div class="relative">
+      <label for='work11'>开通同名微信公众号（miaooao）并接入自动回复</label>
+      <span class='date'>04 Mar 2020</span>
+      <span class='circle'></span>
+    </div>
+    <div class='content'>
+      <p>
+        开通微信公众号的目的是拓展一个生态链（指个人网站：博客：miao OAO、表白墙：miao OAO表白墙、在线网站制作系统：miao OAO网站制作系统、工具箱：miao工具；个人安卓实验应用：每日一喵、喵影视、喵工具箱、喵音、喵辅助；个人IOS实验应用：垃圾喵；团队Unity游戏项目：喵先生的冒险之旅），ah tui，其实就是无聊弄了一个，接入的智能回复是微软小冰的端口。
+      </p>
+    </div>
+  </li>
+  <li class='work'>
+    <input class='radio' id='work10' name='works' type='radio' checked>
+    <div class="relative">
+      <label for='work10'>优化部分显示效果，暂时取消live2d看板娘</label>
+      <span class='date'>02 Mar 2020</span>
+      <span class='circle'></span>
+    </div>
+    <div class='content'>
+      <p>
+        这一版本优化了部分页面小地方的颜色和部分逻辑，因为原版本一代live2d与部分更改冲突故暂时取消。
+      </p>
+    </div>
+  </li>
+  <li class='work'>
+    <input class='radio' id='work9' name='works' type='radio' checked>
+    <div class="relative">
+      <label for='work9'>接入国外cdn服务提供商CF</label>
+      <span class='date'>24 Aug 2019</span>
+      <span class='circle'></span>
+    </div>
+    <div class='content'>
+      <p>
+        它有中文了（2020年4月2日考古），爷的青春结束了。
+      </p>
+    </div>
+  </li>
+  <li class='work'>
+    <input class='radio' id='work8' name='works' type='radio' checked>
+    <div class="relative">
+      <label for='work8'>取消来必力评论服务，更换为缬氨酸</label>
+      <span class='date'>09 Aug 2019</span>
+      <span class='circle'></span>
+    </div>
+    <div class='content'>
+      <p>
+        是一个基于leancloud云引擎的简介评论服务商，自定义因素特别多。
+      </p>
+    </div>
+  </li>
+  <li class='work'>
+    <input class='radio' id='work7' name='works' type='radio' checked>
+    <div class="relative">
+      <label for='work7'>接入腾讯寻人404界面</label>
+      <span class='date'>09 Aug 2019</span>
+      <span class='circle'></span>
+    </div>
+    <div class='content'>
+      <p>
+        一个优美的404界面往往能为网站增添趣味和色彩，但一个寻人404页面也为公益献出了自己的一份力。
+      </p>
+    </div>
+  </li>
+  <li class='work'>
+    <input class='radio' id='work6' name='works' type='radio' checked>
+    <div class="relative">
+      <label for='work6'>接入谷歌分析。</label>
+      <span class='date'>08 Aug 2019</span>
+      <span class='circle'></span>
+    </div>
+    <div class='content'>
+      <p>
+        不得不说谷歌分析的后台界面风格我很喜欢，流量数据也较为真实。
+      </p>
+    </div>
+  </li>
+  <li class='work'>
+    <input class='radio' id='work5' name='works' type='radio' checked>
+    <div class="relative">
+      <label for='work5'>更改顶级域名miaooao.top</label>
+      <span class='date'>08 Aug 2019</span>
+      <span class='circle'></span>
+    </div>
+    <div class='content'>
+      <p>
+        于阿里云购买顶级域名.top后缀，比较推荐这个后缀，首年领券购买1元，原价首年9元，续费一年28。
+      </p>
+    </div>
+  </li>
+  <li class='work'>
+    <input class='radio' id='work4' name='works' type='radio'>
+    <div class="relative">
+      <label for='work4'>接入百度统计</label>
+      <span class='date'>06 Aug 2019</span>
+      <span class='circle'></span>
+    </div>
+    <div class='content'>
+      <p>
+        百度统计作为国内网站流量统计大户，故优先选择接入。
+      </p>
+    </div>
+  </li>
+  <li class='work'>
+    <input class='radio' id='work3' name='works' type='radio'>
+    <div class="relative">
+      <label for='work3'>接入laibili来必力评论服务</label>
+      <span class='date'>06 Aug 2019</span>
+      <span class='circle'></span>
+    </div>
+    <div class='content'>
+      <p>
+        来必力是位于韩国的评论提供商，由于异地加载过慢，注册繁琐，界面较为臃肿而被弃用。
+      </p>
+    </div>
+  </li>
+  <li class='work'>
+    <input class='radio' id='work2' name='works' type='radio'>
+    <div class="relative">
+      <label for='work2'>添加一代live2d看板娘</label>
+      <span class='date'>05 Aug 2019</span>
+      <span class='circle'></span>
+    </div>
+    <div class='content'>
+      <p>
+       使用hexo自带的live2d插件搭建了一个shizuku看板娘模型，属于本网站使用的第一代live2d看板娘模型。
+      </p>
+    </div>
+  </li>
+  <li class='work'>
+    <input class='radio' id='work1' name='works' type='radio'>
+    <div class="relative">
+      <label for='work1'>成功建立blog，miao OAO正式诞生</label>
+      <span class='date'>05 Aug 2019</span>
+      <span class='circle'></span>
+    </div>
+    <div class='content'>
+      <p>
+        miao OAO的博客名字来源于自己对github的一些执念，因为自己一系列作品及社交账号及游戏账号都喜欢加上各种猫，猫太可爱了！每日一吸猫行动从我做起！
+      </p>
+    </div>
+  </li>
+</ul>
+  
+  
+</body>
+</html>

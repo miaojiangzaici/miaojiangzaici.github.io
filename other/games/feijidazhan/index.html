@@ -1,0 +1,30 @@
+﻿<!DOCTYPE html>
+<html>
+ <head>
+  <title>飞机大战-miaooao</title>
+  <meta charset="utf-8"/>
+  <link rel="icon" href="images/plane.ico">
+  <style>
+	div{
+		margin:0px auto;
+		width:480px;
+		height:650px;
+		background:#323232;
+		text-align:center;
+		vertical-align:middle;
+	}
+  </style>
+ </head>
+
+ <body>
+	<div id="box">
+		<canvas id="canvas" width="480" height='650px'></canvas>
+		<audio id="music" ></audio>
+		<audio id="boom" src="audio/explosion_04.mp3"></audio>
+	</div>
+	<script src="plane.js"></script>
+	<script>
+		window.onload=function(){plane.init()};
+	</script>
+ </body>
+</html>

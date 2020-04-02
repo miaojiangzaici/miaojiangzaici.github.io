@@ -1,0 +1,125 @@
+            
+            /* 人机对战 */
+#Titles{
+    height: 50px;
+    width:1000px;
+    margin: 0px auto;
+    background-image: url(../images/Title.png);
+}              
+canvas{
+    box-shadow:-2px -2px 2px #EFEFEF,5px 5px 5px #B9B9B9;
+    border-radius:15px;
+    float: left;
+}
+
+#canvas{ 
+        border-radius: 20px;
+        box-shadow:-2px -2px 2px #EFEFEF,5px 5px 5px #B9B9B9;
+        float: left;
+    }
+#all{
+    height: 560px;
+    width:1040px;
+    margin: 0px auto;
+    
+}
+#img{
+    height: 560px;
+    width:220px;
+    background-image: url(../images/btns1.png);
+    border-radius: 15px;
+    box-shadow:-2px -2px 2px #EFEFEF,5px 5px 5px #B9B9B9;
+    float: left;
+}
+#none{
+    height: 20px;
+    width:20px;
+    float: left;
+}
+#all1{
+    height: 560px;
+    width:240px;
+    float: left;
+}
+#btns{
+
+    height: 560px;
+    width:220px;
+    float: left;
+    text-align: center;
+    background-image: url(../images/btns.png) ;
+    border-radius: 15px ;
+    box-shadow:-2px -2px 2px #EFEFEF,5px 5px 5px #B9B9B9;
+
+   }
+
+audio{
+    width:220px;
+}
+
+#first{
+width:220px;
+height: 60px;
+}
+#about{
+    height:100px;
+    width:220px;
+
+}
+#a{ 
+
+    width:220px;
+    height:100px;
+     border-radius: 20px ;
+}
+
+.btn1{
+
+    height: 48px;
+    width:150px;
+    border-radius: 10px;
+    background-image: url(../images/btn1.png);
+    font-size: 25px;
+    font-family: '华文行楷';
+    outline:none;
+    border-color: #e6a93b;
+    box-shadow:-2px -2px 2px #EFEFEF,5px 5px 5px #2d2927;
+    cursor:pointer;
+
+}
+
+.btn11{text-decoration: none;}
+#close{ 
+    background:url(../images/close.png);
+    width:30px; 
+    height:30px; 
+    cursor:pointer; 
+    position:absolute; 
+    right:5px; 
+    top:15px; 
+    text-indent:-999em;
+    }
+#mask{ 
+    background-color:#ccc;
+    opacity:0.5;
+    filter: alpha(opacity=50); 
+    position:absolute; 
+    left:0;
+    top:0;
+    z-index:1000;
+    }
+#login{ 
+    position:fixed;
+    z-index:1001;
+    }
+.loginCon{ 
+    position:relative; 
+    width:670px;
+    height:380px;
+    /* border-radius: 15px; */    
+    box-shadow:-2px -2px 2px #EFEFEF,5px 5px 5px #2d2927;
+    }
+
+        
+
+         

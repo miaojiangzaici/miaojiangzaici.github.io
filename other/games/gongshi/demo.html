@@ -1,0 +1,344 @@
+﻿
+<head>
+    <link href="bootstrap.css" rel="stylesheet" />
+    <script src="bootstrap.js"></script>
+    <script src="jquery-1.10.2.min.js"></script>
+    <title>
+数学公式转换-miaooao
+    </title>
+</head>
+<body>
+    <div>
+
+        <table class="table table-hover">
+            <tr>
+                <td><label>输入五次函数(没输入就为0)</label></td>
+            </tr>
+            <tr>
+                <td colspan="3">
+
+                    <input id="a" onkeyup="this.value = this.value.replace(/[^\-?\d.]/g, '')" />
+                    <label>x⁵+</label>
+                    <input id="b" onkeyup="this.value = this.value.replace(/[^\-?\d.]/g, '')" />
+                    <label>x⁴ +</label>
+                    <input id="c" onkeyup="this.value = this.value.replace(/[^\-?\d.]/g, '')" />
+                    <label>x³ +</label>
+                    <input id="d" onkeyup="this.value = this.value.replace(/[^\-?\d.]/g, '')" />
+                    <label>x²+</label>
+                    <input id="e" onkeyup="this.value = this.value.replace(/[^\-?\d.]/g, '')" />
+                    <label>x +</label>
+                    <input id="f" onkeyup="this.value = this.value.replace(/[^\-?\d.]/g, '')" />
+                    <label> =y</label>
+                    <input class="btn btn-success" type="submit" id="submit" />
+                   
+                </td>
+            </tr>
+            <tr>
+                <td><label>输入三角函数(没输入就为0)</label></td>
+            </tr>
+            <tr>
+                <td colspan="3">
+
+                    <input id="sa" onkeyup="this.value = this.value.replace(/[^\-?\d.]/g, '')" />
+                    <label>SinX+</label>
+                    <input id="cb" onkeyup="this.value = this.value.replace(/[^\-?\d.]/g, '')" />
+                    <label>CosX +</label>
+                    <input id="tc" onkeyup="this.value = this.value.replace(/[^\-?\d.]/g, '')" />
+                    <label>TanX +</label>
+                    <input id="h" onkeyup="this.value = this.value.replace(/[^\-?\d.]/g, '')" />
+                    
+                    <label> =y</label>
+                    <input class="btn btn-success" type="submit" id="trigonometric" />
+
+                </td>
+            </tr>
+
+        </table>
+
+
+    </div>
+    <div id="text">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+
+
+                    <th width="60%">
+                        计算结果
+                    </th>
+                    <th width="40%">
+                        图像（图像仅供参考)
+                        <input class="btn btn-success" type="submit" id="clean" value="清除画板" />
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <table class="table table-hover">
+
+                            <tr>
+                                <td>
+                                    经过的点：<label id="startpoint"></label>
+                                </td>
+                            </tr>
+                          
+                         
+                            <tr>
+                                <td>
+                                    函数的对x的解：<label id="x"></label>
+
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    函数的对y的解：<label id="y"></label>
+
+                                </td>
+                            </tr>
+
+                        </table>
+                    </td>
+                    <td>
+                        <canvas id="myCanvas" width="400" height="400" style="border:1px solid #c3c3c3;"></canvas>
+
+
+
+
+
+
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+
+</body>
+<script type="text/javascript">
+
+    var c = document.getElementById('myCanvas');
+    var content = c.getContext('2d');
+    //x轴
+    content.moveTo(0, 200);
+    content.lineTo(400, 200);
+    content.stroke();
+    content.moveTo(390,190);
+    content.lineTo(400, 200);
+    content.lineTo(390, 210);
+    content.stroke();
+    content.moveTo(240, 190);
+    content.lineTo(240, 200);
+    content.stroke();
+    content.moveTo(280, 190);
+    content.lineTo(280, 200);
+    content.stroke();
+    content.moveTo(320, 190);
+    content.lineTo(320, 200);
+    content.stroke();
+    content.moveTo(360, 190);
+    content.lineTo(360, 200);
+    content.stroke();
+    content.moveTo(40, 190);
+    content.lineTo(40, 200);
+    content.stroke();
+    content.moveTo(80, 190);
+    content.lineTo(80, 200);
+    content.stroke();
+    content.moveTo(120, 190);
+    content.lineTo(120, 200);
+    content.stroke();
+    content.moveTo(160, 190);
+    content.lineTo(160, 200);
+    content.stroke();
+    content.font = "5px Courier New";
+    content.fillStyle="black"
+    content.fillText("-4", 30, 215)
+    content.fillText("-3", 70, 215)
+    content.fillText("-2", 110, 215)
+    content.fillText("-1", 150, 215)
+    content.fillText("0", 205, 215)
+    content.fillText("1", 238, 215)
+    content.fillText("2", 278, 215)
+    content.fillText("3", 318, 215)
+    content.fillText("4", 358, 215)
+
+
+    content.moveTo(75, 190);
+    content.lineTo(75, 200);
+    content.stroke();
+    content.moveTo(137, 190);
+    content.lineTo(137, 200);
+    content.stroke();
+    content.moveTo(262, 190);
+    content.lineTo(262, 200);
+    content.stroke();
+    content.moveTo(325, 190);
+    content.lineTo(325, 200);
+    content.stroke();
+    content.fillText("-π", 65, 180)
+    content.fillText("-π/2", 125, 180)
+    content.fillText("π/2", 250, 180)
+    content.fillText("π", 322, 180)
+    
+
+    //y轴
+    content.moveTo(200, 400);
+    content.lineTo(200, 0);
+    content.stroke();
+    content.moveTo(190, 10);
+    content.lineTo(200, 0);
+    content.lineTo(210, 10);
+    content.stroke();
+    content.moveTo(210, 40);
+    content.lineTo(200, 40);
+    content.stroke();
+    content.moveTo(210, 80);
+    content.lineTo(200, 80);
+    content.stroke();
+    content.moveTo(210, 120);
+    content.lineTo(200, 120);
+    content.stroke();
+    content.moveTo(210, 160);
+    content.lineTo(200, 160);
+    content.stroke();
+    content.moveTo(210, 240);
+    content.lineTo(200, 240);
+    content.stroke();
+    content.moveTo(210, 280);
+    content.lineTo(200, 280);
+    content.stroke();
+    content.moveTo(210, 320);
+    content.lineTo(200, 320);
+    content.stroke();
+    content.moveTo(210, 360);
+    content.lineTo(200, 360);
+    content.stroke();
+    content.fillText("-4", 180, 360)
+    content.fillText("-3", 180, 320)
+    content.fillText("-2", 180, 280)
+    content.fillText("-1", 180, 240)
+   
+    content.fillText("1", 180, 160)
+    content.fillText("2", 180, 120)
+    content.fillText("3", 180, 80)
+    content.fillText("4", 180, 40)
+
+
+  
+    
+
+
+    $(function ()
+    {
+        function trigonometric(x, a, b, c, d)
+        {
+            return a*Math.sin(x)+b*Math.cos(x)+c*Math.tan(x)+d;
+        }
+      
+       function conversion(x, a, b, c, d, e, f) {
+           return a * x * x * x * x * x + b * x * x * x * x + c * x * x * x + d * x * x + e * x + f;
+       }
+       function converx(x) {
+           return x * 40 + 200;
+       }
+       function convery(y) {
+           return y * (-40) + 200;
+       }
+       
+        $("#submit").click(function () {
+            var a = $("#a").val() * 1;
+            var b = $("#b").val() * 1;
+            var c = $("#c").val() * 1;
+            var d = $("#d").val() * 1;
+            var e = $("#e").val() * 1;
+            var f = $("#f").val() * 1;
+      
+            $("#x").text("");
+            var x=0;
+            var y = 0;
+           var aa = conversion(-1, a, b, c, d, e, f);
+           var bb = conversion(1, a, b, c, d, e, f);
+           var cc = conversion(0, a, b, c, d, e, f);
+
+           $("#startpoint").text("(-1," + aa + ") (1," + bb + ")");
+           $("#y").text("(0," + cc + ")");
+            content.strokeStyle = "#FF5D43";
+            content.beginPath();
+            //content.moveTo(0, 0);
+           
+            for (var i = -5; i < 5; i = i + 0.01)
+            {
+              
+
+
+                y = conversion(i, a, b, c, d, e, f) * 1;
+               
+                //var p = Math.round(y,45)
+                //if (p==0) {
+                //  {
+                //        $("#x").append("(" +Math.round(i, 2)  + ",0)");
+                //    }
+                //}
+              
+               
+                y = convery(y);
+                x=converx(i);
+                content.lineTo(x, y);
+              
+            }
+            
+              
+               
+              
+            
+           
+            content.stroke();
+
+
+        })
+
+        $("#trigonometric").click(function () {
+            var a = $("#sa").val() * 1;
+            var b = $("#cb").val() * 1;
+            var c = $("#tc").val() * 1;
+            var d = $("#h").val() * 1;
+          
+          
+            var aa = trigonometric(-Math.PI/2, a, b, c, d);
+            var bb = trigonometric(Math.PI / 2, a, b, c, d);
+            var cc = trigonometric(0, a, b, c, d);
+
+            $("#startpoint").text("(-π/2," + aa + ") (π/2," + bb + ")");
+            $("#y").text("(0," + cc + ")");
+
+            var x = 0;
+            var y = 0;
+            content.strokeStyle = "#FF5D43";
+            content.beginPath();
+            //content.moveTo(0, 0);
+
+            for (var i = -5; i < 5; i = i + 0.1) {
+
+                y = trigonometric(i, a, b, c, d);
+                y = convery(y);
+                x = converx(i);
+                content.lineTo(x, y);
+            }
+
+            content.stroke();
+
+
+        })
+        $("#clean").click(function () {
+
+            window.location.reload();
+            
+
+        })
+       
+    })
+
+   
+ 
+</script>
