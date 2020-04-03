@@ -6,7 +6,7 @@
 	cursor: pointer;
 	font-size: 12px;
 	left: 0;
-	margin-left: 0px;
+	margin-left: -100px;
 	padding: 5px 2px 5px 5px;
 	position: fixed;
 	transition: margin-left 1s;
@@ -27,7 +27,7 @@
 	left: 0;
 	line-height: 0;
 	position: fixed;
-	transform: translateY(3px);
+	transform: translateY(0px);
 	transition: transform .3s ease-in-out, bottom 3s ease-in-out;
 	z-index: 1;
 }
